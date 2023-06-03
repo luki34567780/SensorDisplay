@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensorDisplay", "SensorDisplay\SensorDisplay.csproj", "{C659462F-EF2C-4BA0-A0CF-A5A50118D02C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SensorDisplay", "SensorDisplay\SensorDisplay.csproj", "{C659462F-EF2C-4BA0-A0CF-A5A50118D02C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CircularGauge", "CirculatGauge\CircularGauge.csproj", "{6EFD5895-177B-4BBB-AF52-29F4D53B3FBD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{C659462F-EF2C-4BA0-A0CF-A5A50118D02C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C659462F-EF2C-4BA0-A0CF-A5A50118D02C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C659462F-EF2C-4BA0-A0CF-A5A50118D02C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EFD5895-177B-4BBB-AF52-29F4D53B3FBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EFD5895-177B-4BBB-AF52-29F4D53B3FBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EFD5895-177B-4BBB-AF52-29F4D53B3FBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EFD5895-177B-4BBB-AF52-29F4D53B3FBD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
