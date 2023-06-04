@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:gauge="clr-namespace:CircularGauge;assembly=CircularGauge"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         xmlns:local="clr-namespace:SensorDisplay"
         mc:Ignorable="d"
@@ -14,24 +13,121 @@
         <DataContext:MainViewModel />
     </Window.DataContext>
     <UniformGrid>
-        <lvc:AngularGauge
-            Value="{Binding Co2Ppm}"
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <lvc:AngularGauge
+                Grid.Row="0"
+                Grid.Column="0"
+                Value="{Binding Co2Ppm}"
+                FromValue="0"
+                ToValue="5000"
+                LabelsStep="500"
+                TicksStep="100"
+                Wedge="300"
+                TicksForeground="White"
+                Foreground="White"
+                FontWeight="Bold"
+                FontSize="26"
+                SectionsInnerRadius=".5">
+                <lvc:AngularGauge.Sections>
+                    <lvc:AngularSection FromValue="0" ToValue="1000" Fill="Green" />
+                    <lvc:AngularSection FromValue="1000" ToValue="2000" Fill="Orange" />
+                    <lvc:AngularSection FromValue="2000" ToValue="5000" Fill="Red" />
+                </lvc:AngularGauge.Sections>
+            </lvc:AngularGauge>
+            <Label HorizontalAlignment="Center" Grid.Row="1" FontSize="{Binding FontSize}">CO2 (PPM)</Label>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <lvc:AngularGauge
+            Value="{Binding Temperature}"
             FromValue="0"
-            ToValue="5000"
-            LabelsStep="500"
-            TicksStep="100"
+            ToValue="60"
+            LabelsStep="5"
+            TicksStep="1"
             Wedge="300"
             TicksForeground="White"
             Foreground="White"
             FontWeight="Bold"
             FontSize="26"
             SectionsInnerRadius=".5">
-            <lvc:AngularGauge.Sections>
-                <lvc:AngularSection FromValue="0" ToValue="1000" Fill="Green" />
-                <lvc:AngularSection FromValue="1000" ToValue="2000" Fill="Orange" />
-                <lvc:AngularSection FromValue="2000" ToValue="5000" Fill="Red" />
-            </lvc:AngularGauge.Sections>
-        </lvc:AngularGauge>
-        <Button Content="Test" Command="{Binding ChangeValueCommand}" />
+                <lvc:AngularGauge.Sections>
+                    <lvc:AngularSection FromValue="0" ToValue="17" Fill="Orange" />
+                    <lvc:AngularSection FromValue="17" ToValue="26" Fill="Green" />
+                    <lvc:AngularSection FromValue="26" ToValue="40" Fill="Orange" />
+                    <lvc:AngularSection FromValue="40" ToValue="60" Fill="Red" />
+                </lvc:AngularGauge.Sections>
+            </lvc:AngularGauge>
+            <Label HorizontalAlignment="Center" Grid.Row="1" FontSize="{Binding FontSize}">Temperature (°C)</Label>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <lvc:AngularGauge
+            Value="{Binding Humidity}"
+            FromValue="0"
+            ToValue="100"
+            LabelsStep="5"
+            TicksStep="1"
+            Wedge="300"
+            TicksForeground="White"
+            Foreground="White"
+            FontWeight="Bold"
+            FontSize="26"
+            SectionsInnerRadius=".5">
+                <lvc:AngularGauge.Sections>
+                    <lvc:AngularSection FromValue="0" ToValue="30" Fill="Orange" />
+                    <lvc:AngularSection FromValue="30" ToValue="50" Fill="Green" />
+                    <lvc:AngularSection FromValue="50" ToValue="80" Fill="Orange" />
+                    <lvc:AngularSection FromValue="80" ToValue="100" Fill="Red" />
+                </lvc:AngularGauge.Sections>
+            </lvc:AngularGauge>
+            <Label HorizontalAlignment="Center" Grid.Row="1" FontSize="{Binding FontSize}">Humidity (%)</Label>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <lvc:AngularGauge
+            Value="{Binding TVOC}"
+            FromValue="0"
+            ToValue="100"
+            LabelsStep="10"
+            TicksStep="1"
+            Wedge="300"
+            TicksForeground="White"
+            Foreground="White"
+            FontWeight="Bold"
+            FontSize="26"
+            SectionsInnerRadius=".5">
+                <lvc:AngularGauge.Sections>
+                    <lvc:AngularSection FromValue="0" ToValue="10" Fill="Green" />
+                    <lvc:AngularSection FromValue="10" ToValue="20" Fill="Orange" />
+                    <lvc:AngularSection FromValue="20" ToValue="100" Fill="Red" />
+                </lvc:AngularGauge.Sections>
+            </lvc:AngularGauge>
+            <Label HorizontalAlignment="Center" Grid.Row="1" FontSize="{Binding FontSize}">TVOC (PPM)</Label>
+        </Grid>
     </UniformGrid>
 </Window>

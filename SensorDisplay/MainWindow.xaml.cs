@@ -10,7 +10,6 @@ namespace SensorDisplay
         public MainWindow()
         {
             InitializeComponent();
-            SizeChanged += (_, args) => ((MainViewModel)DataContext).WindowSizeChanged(args.NewSize);
         }
     }
 }
