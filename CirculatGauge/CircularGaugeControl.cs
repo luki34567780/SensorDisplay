@@ -1126,7 +1126,7 @@ namespace CircularGauge
 
 
         //Drawing the scale with the Scale Radius
-        private void DrawScale()
+        public void DrawScale()
         {
             //Calculate one major tick angle 
             Double majorTickUnitAngle = ScaleSweepAngle / MajorDivisionsCount;

@@ -3,12 +3,54 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:controls="using:Microsoft.Toolkit.Uwp.Ui.Controls"
+        xmlns:gauge="clr-namespace:CircularGauge;assembly=CircularGauge"
         xmlns:local="clr-namespace:SensorDisplay"
         mc:Ignorable="d"
+        xmlns:DataContext="clr-namespace:SensorDisplay"
         
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="1500" Width="1500">
+    <Window.DataContext>
+        <DataContext:MainViewModel />
+    </Window.DataContext>
     <UniformGrid>
-
+        <gauge:CircularGaugeControl
+            x:Name="test"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Radius="{Binding Radius}"
+            ScaleRadius="{Binding ScaleRadius}"
+            ScaleStartAngle="120"
+            ScaleSweepAngle="300"
+            PointerLength="{Binding PointerLength}"
+            PointerCapRadius="35"
+            RangeIndicatorThickness="10"
+            RangeIndicatorRadius="{Binding RangeIndicatorRadius}"
+            
+            ScaleLabelForeground="White"
+            ScaleLabelRadius="{Binding ScaleLabelRadius}"
+            ScaleLabelFontSize="16"
+            ScaleLabelSize="60,30"
+            
+            MinValue="0"
+            MaxValue="4000"
+            MajorDivisionsCount="8" 
+            MinorDivisionsCount="5"
+            CurrentValue="{Binding Co2Ppm}"
+            MajorTickColor="White"
+            MinorTickColor="LightGray"
+            PointerThickness="16"
+            MajorTickSize="30,9"
+            MinorTickSize="9,3"
+            BelowOptimalRangeColor="Green"
+            OptimalRangeColor="Yellow"
+            AboveOptimalRangeColor="Red"
+            OptimalRangeStartValue="1000"
+            OptimalRangeEndValue="2000" 
+            DialText="Co2 (PPM)"
+            DialTextOffset="80"
+            DialTextColor="White"
+            DialTextFontSize="128"
+            />
+        <Button Content="Test" Command="{Binding ChangeValueCommand}" Click="Button_Click" />
     </UniformGrid>
 </Window>

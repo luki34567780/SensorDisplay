@@ -10,6 +10,12 @@ namespace SensorDisplay
         public MainWindow()
         {
             InitializeComponent();
+            SizeChanged += (_, args) => ((MainViewModel)DataContext).WindowSizeChanged(args.NewSize);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.test = new CircularGauge.CircularGaugeControl();
         }
     }
 }
