@@ -10,11 +10,13 @@ namespace SensorDisplay
     [StructLayout(LayoutKind.Sequential, CharSet=CharSet.Ansi,Pack=1)]
     internal struct DataPacket 
     {
-        public const int Size = sizeof(double) * 5;
+        public const int Size = sizeof(double) * 7;
         public double Co2PPM;
         public double TemperatureSensor;
         public double Humidity;
         public double TVOC;
         public double CpuTemperatureSensor;
+        public double CpuFrequencyMhz;
+        public double IdleTimeMs;
     }
 }

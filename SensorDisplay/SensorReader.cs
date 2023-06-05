@@ -8,6 +8,7 @@ using System.Timers;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.Threading;
+using System.Windows;
 
 namespace SensorDisplay
 {
@@ -24,6 +25,7 @@ namespace SensorDisplay
 
         private object _dataLock = new object();
         private DataPacket _data;
+        private string test = "";
 
         public SensorReader(string portName = "COM1", int baudrate = 115200)
         {
@@ -34,6 +36,7 @@ namespace SensorDisplay
             SerialPort.DtrEnable = true;
             SerialPort.Open();
 
+            Application.Current.Exit += (_, _2) => SerialPort.Dispose();
             Timer = new System.Timers.Timer(100);
             Timer.Elapsed += Timer_Elapsed;
 
@@ -68,6 +71,13 @@ namespace SensorDisplay
                     Debugger.Log(0, "", "Everything Zero! Something is wrong!\n");
                     return;
                 }
+
+                try
+                {
+                    var str = Encoding.ASCII.GetString(buf);
+                    test += str;
+                }
+                catch { }
 
                 var handle = GCHandle.Alloc(buf, GCHandleType.Pinned);
 

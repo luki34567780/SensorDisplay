@@ -1,9 +1,11 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Animation;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -45,6 +47,30 @@ namespace SensorDisplay
             set => SetProperty(ref _tvoc, value);
         }
 
+        private double _cpuTemperature = 0;
+
+        public double CpuTemperature
+        {
+            get => _cpuTemperature;
+            set => SetProperty(ref _cpuTemperature, value);
+        }
+
+        private double _cpuFrequency = 125;
+
+        public double CpuFrequency
+        {
+            get => _cpuFrequency;
+            set => SetProperty(ref _cpuFrequency, value);
+        }
+
+        private double _waitTime = 0;
+
+        public double WaitTime
+        {
+            get => _waitTime;
+            set => SetProperty(ref _waitTime, value);
+        }
+
         public MainViewModel() 
         {
             _sensors = new SensorReader("COM13", 9600);
@@ -57,9 +83,9 @@ namespace SensorDisplay
             Temperature = packet.TemperatureSensor;
             Humidity = packet.Humidity;
             TVOC = packet.TVOC;
+            CpuTemperature = packet.CpuTemperatureSensor;
+            CpuFrequency = packet.CpuFrequencyMhz;
+            WaitTime = packet.IdleTimeMs;
         }
-
-        private int ScaleToSize(int fullSize, double scale) => (int)(fullSize * scale);
-
     }
 }

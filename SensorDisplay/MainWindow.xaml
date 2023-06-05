@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         xmlns:DataContext="clr-namespace:SensorDisplay"
         
-        Title="MainWindow" Height="1500" Width="1500">
+        Title="MainWindow" Height="1500" Width="1500" Background="Black">
     <Window.DataContext>
         <DataContext:MainViewModel />
     </Window.DataContext>
@@ -41,7 +41,7 @@
                     <lvc:AngularSection FromValue="2000" ToValue="5000" Fill="Red" />
                 </lvc:AngularGauge.Sections>
             </lvc:AngularGauge>
-            <Label HorizontalAlignment="Center" Grid.Row="1" FontSize="{Binding FontSize}">CO2 (PPM)</Label>
+            <Label HorizontalAlignment="Center" Grid.Row="1" Foreground="White" FontSize="{Binding FontSize}">CO2 (PPM)</Label>
         </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -70,7 +70,7 @@
                     <lvc:AngularSection FromValue="40" ToValue="60" Fill="Red" />
                 </lvc:AngularGauge.Sections>
             </lvc:AngularGauge>
-            <Label HorizontalAlignment="Center" Grid.Row="1" FontSize="{Binding FontSize}">Temperature (°C)</Label>
+            <Label HorizontalAlignment="Center" Grid.Row="1" Foreground="White" FontSize="{Binding FontSize}">Ambient Temperature (°C)</Label>
         </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -99,7 +99,7 @@
                     <lvc:AngularSection FromValue="80" ToValue="100" Fill="Red" />
                 </lvc:AngularGauge.Sections>
             </lvc:AngularGauge>
-            <Label HorizontalAlignment="Center" Grid.Row="1" FontSize="{Binding FontSize}">Humidity (%)</Label>
+            <Label HorizontalAlignment="Center" Grid.Row="1" Foreground="White" FontSize="{Binding FontSize}">Humidity (%)</Label>
         </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -127,7 +127,93 @@
                     <lvc:AngularSection FromValue="20" ToValue="100" Fill="Red" />
                 </lvc:AngularGauge.Sections>
             </lvc:AngularGauge>
-            <Label HorizontalAlignment="Center" Grid.Row="1" FontSize="{Binding FontSize}">TVOC (PPM)</Label>
+            <Label HorizontalAlignment="Center" Grid.Row="1" Foreground="White" FontSize="{Binding FontSize}">TVOC (PPM)</Label>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <lvc:AngularGauge
+            Value="{Binding CpuTemperature}"
+            FromValue="-50"
+            ToValue="120"
+            LabelsStep="10"
+            TicksStep="1"
+            Wedge="300"
+            TicksForeground="White"
+            Foreground="White"
+            FontWeight="Bold"
+            FontSize="26"
+            SectionsInnerRadius=".5">
+                <lvc:AngularGauge.Sections>
+                    <lvc:AngularSection FromValue="-50" ToValue="-20" Fill="Orange" />
+                    <lvc:AngularSection FromValue="-20" ToValue="50" Fill="Green" />
+                    <lvc:AngularSection FromValue="50" ToValue="85" Fill="Orange" />
+                    <lvc:AngularSection FromValue="80" ToValue="120" Fill="Red" />
+                </lvc:AngularGauge.Sections>
+            </lvc:AngularGauge>
+            <Label HorizontalAlignment="Center" Grid.Row="1" Foreground="White" FontSize="{Binding FontSize}">CPU Temperature (°C)</Label>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <lvc:AngularGauge
+            Value="{Binding CpuFrequency}"
+            FromValue="0"
+            ToValue="300"
+            LabelsStep="25"
+            TicksStep="5"
+            Wedge="300"
+            TicksForeground="White"
+            Foreground="White"
+            FontWeight="Bold"
+            FontSize="26"
+            SectionsInnerRadius=".5">
+                <lvc:AngularGauge.Sections>
+                    <lvc:AngularSection FromValue="0" ToValue="10" Fill="Orange" />
+                    <lvc:AngularSection FromValue="10" ToValue="133" Fill="Green" />
+                    <lvc:AngularSection FromValue="133" ToValue="250" Fill="Orange" />
+                    <lvc:AngularSection FromValue="250" ToValue="300" Fill="Red" />
+                </lvc:AngularGauge.Sections>
+            </lvc:AngularGauge>
+            <Label HorizontalAlignment="Center" Grid.Row="1" Foreground="White" FontSize="{Binding FontSize}">CPU Frequency (Mhz)</Label>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <lvc:AngularGauge
+            Value="{Binding WaitTime}"
+            FromValue="0"
+            ToValue="500"
+            LabelsStep="25"
+            TicksStep="5"
+            Wedge="300"
+            TicksForeground="White"
+            Foreground="White"
+            FontWeight="Bold"
+            FontSize="26"
+            SectionsInnerRadius=".5">
+                <lvc:AngularGauge.Sections>
+                    <lvc:AngularSection FromValue="0" ToValue="25" Fill="red" />
+                    <lvc:AngularSection FromValue="25" ToValue="250" Fill="Green" />
+                    <lvc:AngularSection FromValue="250" ToValue="500" Fill="Red" />
+                </lvc:AngularGauge.Sections>
+            </lvc:AngularGauge>
+            <Label HorizontalAlignment="Center" Grid.Row="1" Foreground="White" FontSize="{Binding FontSize}">Idle time (ms)</Label>
         </Grid>
     </UniformGrid>
 </Window>
