@@ -10,7 +10,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.Windows;
 
-namespace SensorDisplay
+namespace SensorDisplay.SensorModels.SensorViewModel
 {
     internal class SensorReader
     {
@@ -29,14 +29,18 @@ namespace SensorDisplay
 
         public SensorReader(string portName = "COM1", int baudrate = 115200)
         {
-            var names = SerialPort.GetPortNames();
             SerialPort = new SerialPort(portName, baudrate, Parity.None, 8, StopBits.One);
             SerialPort.Handshake = Handshake.None;
             SerialPort.RtsEnable = true;
             SerialPort.DtrEnable = true;
             SerialPort.Open();
 
-            Application.Current.Exit += (_, _2) => SerialPort.Dispose();
+            Application.Current.Exit += (_, _2) =>
+            {
+                SerialPort.Close();
+                SerialPort.Dispose();
+            };
+
             Timer = new System.Timers.Timer(100);
             Timer.Elapsed += Timer_Elapsed;
 

@@ -1,91 +1,71 @@
 ﻿using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media.Animation;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using SensorDisplay.SensorModels;
+using SensorDisplay.SensorModels.SensorViewModel;
 
 namespace SensorDisplay
 {
     internal partial class MainViewModel : ObservableObject
     {
-        public int FontSize { get; set; } = 30;
-        private int _co2Ppm = 0;
-        private SensorReader _sensors;
-
-        public int Co2Ppm
+        private int _currentIndex;
+        public int CurrentIndex
         {
-            get => _co2Ppm;
-            set => SetProperty(ref _co2Ppm, value);
+            get => _currentIndex;
+            set
+            {
+                SetProperty(ref _currentIndex, value);
+                CurrentSensor = Sensors[value];
+            }
+        }
+        public List<ISensorViewModel> Sensors { get; set; } = new();
+
+        private ISensorViewModel _currentSensor;
+        public ISensorViewModel CurrentSensor 
+        {
+            get => _currentSensor;
+            set => SetProperty(ref _currentSensor, value);
         }
 
-        private double _temperature = 0;
-        
-        public double Temperature
+        public MainViewModel()
         {
-            get => _temperature;
-            set => SetProperty(ref _temperature, value);
         }
 
-        private double _humidity = 0;
-
-        public double Humidity
+        [RelayCommand]
+        public void UpPressed()
         {
-            get => _humidity;
-            set => SetProperty(ref _humidity, value);
+            if (CurrentIndex == Sensors.Count || Sensors.Count == 0)
+                return;
+            CurrentIndex++;
         }
 
-        private double _tvoc = 0;
-
-        public double TVOC
+        [RelayCommand] 
+        public void DownPressed()
         {
-            get => _tvoc = 0;
-            set => SetProperty(ref _tvoc, value);
+            if (CurrentIndex == 0)
+                return;
+
+            CurrentIndex--;
         }
 
-        private double _cpuTemperature = 0;
-
-        public double CpuTemperature
+        [RelayCommand]
+        public async void AddNewSerialSensor()
         {
-            get => _cpuTemperature;
-            set => SetProperty(ref _cpuTemperature, value);
-        }
+            var sensor = await SensorViewModel.CreateNew();
+            Sensors.Add(sensor);
 
-        private double _cpuFrequency = 125;
+            if (CurrentSensor == null)
+                CurrentSensor = sensor;
 
-        public double CpuFrequency
-        {
-            get => _cpuFrequency;
-            set => SetProperty(ref _cpuFrequency, value);
-        }
-
-        private double _waitTime = 0;
-
-        public double WaitTime
-        {
-            get => _waitTime;
-            set => SetProperty(ref _waitTime, value);
-        }
-
-        public MainViewModel() 
-        {
-            _sensors = new SensorReader("COM13", 9600);
-            _sensors.NewValuesAvailableEvent += NewValuesAvailable;
-        }
-
-        private void NewValuesAvailable(object? sender, DataPacket packet)
-        {
-            Co2Ppm = (int)packet.Co2PPM;
-            Temperature = packet.TemperatureSensor;
-            Humidity = packet.Humidity;
-            TVOC = packet.TVOC;
-            CpuTemperature = packet.CpuTemperatureSensor;
-            CpuFrequency = packet.CpuFrequencyMhz;
-            WaitTime = packet.IdleTimeMs;
         }
     }
 }

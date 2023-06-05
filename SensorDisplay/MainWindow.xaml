@@ -12,208 +12,239 @@
     <Window.DataContext>
         <DataContext:MainViewModel />
     </Window.DataContext>
-    <UniformGrid>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="90*"/>
-                <RowDefinition Height="10*"/>
-            </Grid.RowDefinitions>
-            <lvc:AngularGauge
-                Grid.Row="0"
-                Grid.Column="0"
-                Value="{Binding Co2Ppm}"
-                FromValue="0"
-                ToValue="5000"
-                LabelsStep="500"
-                TicksStep="100"
-                Wedge="300"
-                TicksForeground="White"
-                Foreground="White"
-                FontWeight="Bold"
-                FontSize="26"
-                SectionsInnerRadius=".5">
-                <lvc:AngularGauge.Sections>
-                    <lvc:AngularSection FromValue="0" ToValue="1000" Fill="Green" />
-                    <lvc:AngularSection FromValue="1000" ToValue="2000" Fill="Orange" />
-                    <lvc:AngularSection FromValue="2000" ToValue="5000" Fill="Red" />
-                </lvc:AngularGauge.Sections>
-            </lvc:AngularGauge>
-            <Label HorizontalAlignment="Center" Grid.Row="1" Foreground="White" FontSize="{Binding FontSize}">CO2 (PPM)</Label>
-        </Grid>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="90*"/>
-                <RowDefinition Height="10*"/>
-            </Grid.RowDefinitions>
-            <lvc:AngularGauge
-            Value="{Binding Temperature}"
-            FromValue="0"
-            ToValue="60"
-            LabelsStep="5"
-            TicksStep="1"
-            Wedge="300"
-            TicksForeground="White"
-            Foreground="White"
-            FontWeight="Bold"
-            FontSize="26"
-            SectionsInnerRadius=".5">
-                <lvc:AngularGauge.Sections>
-                    <lvc:AngularSection FromValue="0" ToValue="17" Fill="Orange" />
-                    <lvc:AngularSection FromValue="17" ToValue="26" Fill="Green" />
-                    <lvc:AngularSection FromValue="26" ToValue="40" Fill="Orange" />
-                    <lvc:AngularSection FromValue="40" ToValue="60" Fill="Red" />
-                </lvc:AngularGauge.Sections>
-            </lvc:AngularGauge>
-            <Label HorizontalAlignment="Center" Grid.Row="1" Foreground="White" FontSize="{Binding FontSize}">Ambient Temperature (°C)</Label>
-        </Grid>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="90*"/>
-                <RowDefinition Height="10*"/>
-            </Grid.RowDefinitions>
-            <lvc:AngularGauge
-            Value="{Binding Humidity}"
-            FromValue="0"
-            ToValue="100"
-            LabelsStep="5"
-            TicksStep="1"
-            Wedge="300"
-            TicksForeground="White"
-            Foreground="White"
-            FontWeight="Bold"
-            FontSize="26"
-            SectionsInnerRadius=".5">
-                <lvc:AngularGauge.Sections>
-                    <lvc:AngularSection FromValue="0" ToValue="30" Fill="Orange" />
-                    <lvc:AngularSection FromValue="30" ToValue="50" Fill="Green" />
-                    <lvc:AngularSection FromValue="50" ToValue="80" Fill="Orange" />
-                    <lvc:AngularSection FromValue="80" ToValue="100" Fill="Red" />
-                </lvc:AngularGauge.Sections>
-            </lvc:AngularGauge>
-            <Label HorizontalAlignment="Center" Grid.Row="1" Foreground="White" FontSize="{Binding FontSize}">Humidity (%)</Label>
-        </Grid>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="90*"/>
-                <RowDefinition Height="10*"/>
-            </Grid.RowDefinitions>
-            <lvc:AngularGauge
-            Value="{Binding TVOC}"
-            FromValue="0"
-            ToValue="100"
-            LabelsStep="10"
-            TicksStep="1"
-            Wedge="300"
-            TicksForeground="White"
-            Foreground="White"
-            FontWeight="Bold"
-            FontSize="26"
-            SectionsInnerRadius=".5">
-                <lvc:AngularGauge.Sections>
-                    <lvc:AngularSection FromValue="0" ToValue="10" Fill="Green" />
-                    <lvc:AngularSection FromValue="10" ToValue="20" Fill="Orange" />
-                    <lvc:AngularSection FromValue="20" ToValue="100" Fill="Red" />
-                </lvc:AngularGauge.Sections>
-            </lvc:AngularGauge>
-            <Label HorizontalAlignment="Center" Grid.Row="1" Foreground="White" FontSize="{Binding FontSize}">TVOC (PPM)</Label>
-        </Grid>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="90*"/>
-                <RowDefinition Height="10*"/>
-            </Grid.RowDefinitions>
-            <lvc:AngularGauge
-            Value="{Binding CpuTemperature}"
-            FromValue="-50"
-            ToValue="120"
-            LabelsStep="10"
-            TicksStep="1"
-            Wedge="300"
-            TicksForeground="White"
-            Foreground="White"
-            FontWeight="Bold"
-            FontSize="26"
-            SectionsInnerRadius=".5">
-                <lvc:AngularGauge.Sections>
-                    <lvc:AngularSection FromValue="-50" ToValue="-20" Fill="Orange" />
-                    <lvc:AngularSection FromValue="-20" ToValue="50" Fill="Green" />
-                    <lvc:AngularSection FromValue="50" ToValue="85" Fill="Orange" />
-                    <lvc:AngularSection FromValue="80" ToValue="120" Fill="Red" />
-                </lvc:AngularGauge.Sections>
-            </lvc:AngularGauge>
-            <Label HorizontalAlignment="Center" Grid.Row="1" Foreground="White" FontSize="{Binding FontSize}">CPU Temperature (°C)</Label>
-        </Grid>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="90*"/>
-                <RowDefinition Height="10*"/>
-            </Grid.RowDefinitions>
-            <lvc:AngularGauge
-            Value="{Binding CpuFrequency}"
-            FromValue="0"
-            ToValue="300"
-            LabelsStep="25"
-            TicksStep="5"
-            Wedge="300"
-            TicksForeground="White"
-            Foreground="White"
-            FontWeight="Bold"
-            FontSize="26"
-            SectionsInnerRadius=".5">
-                <lvc:AngularGauge.Sections>
-                    <lvc:AngularSection FromValue="0" ToValue="10" Fill="Orange" />
-                    <lvc:AngularSection FromValue="10" ToValue="133" Fill="Green" />
-                    <lvc:AngularSection FromValue="133" ToValue="250" Fill="Orange" />
-                    <lvc:AngularSection FromValue="250" ToValue="300" Fill="Red" />
-                </lvc:AngularGauge.Sections>
-            </lvc:AngularGauge>
-            <Label HorizontalAlignment="Center" Grid.Row="1" Foreground="White" FontSize="{Binding FontSize}">CPU Frequency (Mhz)</Label>
-        </Grid>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="90*"/>
-                <RowDefinition Height="10*"/>
-            </Grid.RowDefinitions>
-            <lvc:AngularGauge
-            Value="{Binding WaitTime}"
-            FromValue="0"
-            ToValue="500"
-            LabelsStep="25"
-            TicksStep="5"
-            Wedge="300"
-            TicksForeground="White"
-            Foreground="White"
-            FontWeight="Bold"
-            FontSize="26"
-            SectionsInnerRadius=".5">
-                <lvc:AngularGauge.Sections>
-                    <lvc:AngularSection FromValue="0" ToValue="25" Fill="red" />
-                    <lvc:AngularSection FromValue="25" ToValue="250" Fill="Green" />
-                    <lvc:AngularSection FromValue="250" ToValue="500" Fill="Red" />
-                </lvc:AngularGauge.Sections>
-            </lvc:AngularGauge>
-            <Label HorizontalAlignment="Center" Grid.Row="1" Foreground="White" FontSize="{Binding FontSize}">Idle time (ms)</Label>
-        </Grid>
-    </UniformGrid>
+    <Window.Resources>
+        <local:ObjectToStringConverter x:Key="ObjectToStringConverter" />
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*" />
+            <ColumnDefinition Width="90*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0">
+            <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Height="50" Margin="10, 10, 10, 0" BorderThickness="0" Command="{Binding UpPressedCommand}" >
+                <Viewbox HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <Canvas Width="24" Height="24">
+                        <Path Fill="Gray" Stroke="Black" StrokeThickness="1" Data="M24,24 L12,0 L0,24 Z"/>
+                    </Canvas>
+                </Viewbox>
+            </Button>
+            <TextBlock Text="{Binding CurrentIndex, Converter={StaticResource ObjectToStringConverter}}" Background="LightGray" Margin="10, 0, 10, 0" TextAlignment="Center"/>
+            <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Height="50" Margin="10, 0, 10, 10" BorderThickness="0" Command="{Binding DownPressedCommand}" >
+                <Viewbox HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <Canvas Width="24" Height="24">
+                        <Path Fill="Gray" Stroke="Black" StrokeThickness="1" Data="M0,0 L12,24 L24,0 Z"/>
+                    </Canvas>
+                </Viewbox>
+            </Button>
+            <Button Content="Add new serial sensor" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Command="{Binding AddNewSerialSensorCommand}" />
+        </StackPanel>
+        
+        <UniformGrid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80*"/>
+                    <RowDefinition Height="20*"/>
+                </Grid.RowDefinitions>
+                <lvc:AngularGauge
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Value="{Binding CurrentSensor.Co2Ppm}"
+                        FromValue="0"
+                        ToValue="5000"
+                        LabelsStep="500"
+                        TicksStep="100"
+                        Wedge="300"
+                        TicksForeground="White"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        FontSize="26"
+                        SectionsInnerRadius=".5">
+                    <lvc:AngularGauge.Sections>
+                        <lvc:AngularSection FromValue="0" ToValue="1000" Fill="Green" />
+                        <lvc:AngularSection FromValue="1000" ToValue="2000" Fill="Orange" />
+                        <lvc:AngularSection FromValue="2000" ToValue="5000" Fill="Red" />
+                    </lvc:AngularGauge.Sections>
+                </lvc:AngularGauge>
+                <Label HorizontalAlignment="Center" Grid.Row="1" Foreground="White" FontSize="{Binding CurrentSensor.FontSize}">CO2 (PPM)</Label>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80*"/>
+                    <RowDefinition Height="20*"/>
+                </Grid.RowDefinitions>
+                <lvc:AngularGauge
+                    Value="{Binding CurrentSensor.Temperature}"
+                    FromValue="0"
+                    ToValue="60"
+                    LabelsStep="5"
+                    TicksStep="1"
+                    Wedge="300"
+                    TicksForeground="White"
+                    Foreground="White"
+                    FontWeight="Bold"
+                    FontSize="26"
+                    SectionsInnerRadius=".5">
+                    <lvc:AngularGauge.Sections>
+                        <lvc:AngularSection FromValue="0" ToValue="17" Fill="Orange" />
+                        <lvc:AngularSection FromValue="17" ToValue="26" Fill="Green" />
+                        <lvc:AngularSection FromValue="26" ToValue="50" Fill="Orange" />
+                        <lvc:AngularSection FromValue="50" ToValue="60" Fill="Red" />
+                    </lvc:AngularGauge.Sections>
+                </lvc:AngularGauge>
+                <Label HorizontalAlignment="Center" Grid.Row="1" Foreground="White" FontSize="{Binding CurrentSensor.FontSize}">Ambient Temperature (°C)</Label>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80*"/>
+                    <RowDefinition Height="20*"/>
+                </Grid.RowDefinitions>
+                <lvc:AngularGauge
+                    Value="{Binding CurrentSensor.Humidity}"
+                    FromValue="0"
+                    ToValue="100"
+                    LabelsStep="5"
+                    TicksStep="1"
+                    Wedge="300"
+                    TicksForeground="White"
+                    Foreground="White"
+                    FontWeight="Bold"
+                    FontSize="26"
+                    SectionsInnerRadius=".5">
+                    <lvc:AngularGauge.Sections>
+                        <lvc:AngularSection FromValue="0" ToValue="30" Fill="Orange" />
+                        <lvc:AngularSection FromValue="30" ToValue="50" Fill="Green" />
+                        <lvc:AngularSection FromValue="50" ToValue="80" Fill="Orange" />
+                        <lvc:AngularSection FromValue="80" ToValue="100" Fill="Red" />
+                    </lvc:AngularGauge.Sections>
+                </lvc:AngularGauge>
+                <Label HorizontalAlignment="Center" Grid.Row="1" Foreground="White" FontSize="{Binding CurrentSensor.FontSize}">Humidity (%)</Label>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80*"/>
+                    <RowDefinition Height="20*"/>
+                </Grid.RowDefinitions>
+                <lvc:AngularGauge
+                    Value="{Binding CurrentSensor.TVOC}"
+                    FromValue="0"
+                    ToValue="100"
+                    LabelsStep="10"
+                    TicksStep="1"
+                    Wedge="300"
+                    TicksForeground="White"
+                    Foreground="White"
+                    FontWeight="Bold"
+                    FontSize="26"
+                    SectionsInnerRadius=".5">
+                    <lvc:AngularGauge.Sections>
+                        <lvc:AngularSection FromValue="0" ToValue="10" Fill="Green" />
+                        <lvc:AngularSection FromValue="10" ToValue="20" Fill="Orange" />
+                        <lvc:AngularSection FromValue="20" ToValue="100" Fill="Red" />
+                    </lvc:AngularGauge.Sections>
+                </lvc:AngularGauge>
+                <Label HorizontalAlignment="Center" Grid.Row="1" Foreground="White" FontSize="{Binding CurrentSensor.FontSize}">TVOC (PPM)</Label>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80*"/>
+                    <RowDefinition Height="20*"/>
+                </Grid.RowDefinitions>
+                <lvc:AngularGauge
+                    Value="{Binding CurrentSensor.CpuTemperature}"
+                    FromValue="-50"
+                    ToValue="120"
+                    LabelsStep="10"
+                    TicksStep="1"
+                    Wedge="300"
+                    TicksForeground="White"
+                    Foreground="White"
+                    FontWeight="Bold"
+                    FontSize="26"
+                    SectionsInnerRadius=".5">
+                    <lvc:AngularGauge.Sections>
+                        <lvc:AngularSection FromValue="-50" ToValue="-20" Fill="Orange" />
+                        <lvc:AngularSection FromValue="-20" ToValue="50" Fill="Green" />
+                        <lvc:AngularSection FromValue="50" ToValue="85" Fill="Orange" />
+                        <lvc:AngularSection FromValue="80" ToValue="120" Fill="Red" />
+                    </lvc:AngularGauge.Sections>
+                </lvc:AngularGauge>
+                <Label HorizontalAlignment="Center" Grid.Row="1" Foreground="White" FontSize="{Binding CurrentSensor.FontSize}">CPU Temperature (°C)</Label>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80*"/>
+                    <RowDefinition Height="20*"/>
+                </Grid.RowDefinitions>
+                <lvc:AngularGauge
+                    Value="{Binding CurrentSensor.CpuFrequency}"
+                    FromValue="0"
+                    ToValue="300"
+                    LabelsStep="25"
+                    TicksStep="5"
+                    Wedge="300"
+                    TicksForeground="White"
+                    Foreground="White"
+                    FontWeight="Bold"
+                    FontSize="26"
+                    SectionsInnerRadius=".5">
+                    <lvc:AngularGauge.Sections>
+                        <lvc:AngularSection FromValue="0" ToValue="10" Fill="Orange" />
+                        <lvc:AngularSection FromValue="10" ToValue="133" Fill="Green" />
+                        <lvc:AngularSection FromValue="133" ToValue="250" Fill="Orange" />
+                        <lvc:AngularSection FromValue="250" ToValue="300" Fill="Red" />
+                    </lvc:AngularGauge.Sections>
+                </lvc:AngularGauge>
+                <Label HorizontalAlignment="Center" Grid.Row="1" Foreground="White" FontSize="{Binding CurrentSensor.FontSize}">CPU Frequency (Mhz)</Label>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80*"/>
+                    <RowDefinition Height="20*"/>
+                </Grid.RowDefinitions>
+                <lvc:AngularGauge
+                    Value="{Binding CurrentSensor.WaitTime}"
+                    FromValue="0"
+                    ToValue="500"
+                    LabelsStep="25"
+                    TicksStep="5"
+                    Wedge="300"
+                    TicksForeground="White"
+                    Foreground="White"
+                    FontWeight="Bold"
+                    FontSize="26"
+                    SectionsInnerRadius=".5">
+                    <lvc:AngularGauge.Sections>
+                        <lvc:AngularSection FromValue="0" ToValue="25" Fill="red" />
+                        <lvc:AngularSection FromValue="25" ToValue="250" Fill="Green" />
+                        <lvc:AngularSection FromValue="250" ToValue="500" Fill="Red" />
+                    </lvc:AngularGauge.Sections>
+                </lvc:AngularGauge>
+                <Label HorizontalAlignment="Center" Grid.Row="1" Foreground="White" FontSize="{Binding CurrentSensor.FontSize}">Idle time (ms)</Label>
+            </Grid>
+        </UniformGrid>
+    </Grid>
 </Window>
